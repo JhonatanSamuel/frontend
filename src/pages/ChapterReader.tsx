@@ -21,8 +21,8 @@ const ChapterReader = () => {
     const fetchData = async () => {
       try {
         const [chapterRes, allChaptersRes] = await Promise.all([
-          axios.get(`http://localhost:5000/api/chapters/${currentId}`),
-          axios.get("http://localhost:5000/api/chapters"),
+          axios.get(`https://one-piece-api-h20v.onrender.com//${currentId}`),
+          axios.get("https://one-piece-api-h20v.onrender.com/"),
         ]);
         setChapter(chapterRes.data);
         setAllChapters(allChaptersRes.data);
