@@ -1,0 +1,166 @@
+.home-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  color: white;
+  font-family: sans-serif;
+}
+
+.background-image {
+  background-image: url("https://i.redd.it/99yjlmbv91j91.png");
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.25;
+  z-index: 1;
+}
+
+.overlay-content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  top: 20%;
+
+  h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #ffd700; // amarelo ouro
+    text-align: center;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  }
+
+  p {
+    font-size: 23px;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: #ffffff;
+    text-align: left;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+   .button-wrapper {
+    max-width:200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+
+   .manga-button {
+    background-color: #e63946;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    img.luffy-icon {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    &:hover {
+        background-color: #b71c1c;
+        transform: scale(1.05);
+
+        img.luffy-icon {
+        transform: rotate(10deg) scale(1.1);
+        }
+    }
+    }
+
+
+        @media (max-width: 768px) {
+    .overlay-content {
+        padding: 1rem;
+    }
+
+    .chapter-page {
+        max-width: 100%;
+    }
+
+    .nav-button {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .navigation-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    .back-to-list,
+    .back-to-home {
+        text-align: center;
+    }
+
+    .scroll-to-top {
+        bottom: 1rem;
+        right: 1rem;
+        font-size: 1.2rem;
+        padding: 0.4rem 0.6rem;
+    }
+
+    .home {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+
+    .description {
+        max-width: 700px;
+        margin: 2rem 1rem;
+        color: white;
+        text-shadow: 1px 1px 3px black;
+        font-size: 1.2rem;
+    }
+
+    .start-button {
+        padding: 0.8rem 1.5rem;
+        background-color: #ffd700;
+        border: none;
+        border-radius: 8px;
+        color: black;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 0 10px black;
+        transition: transform 0.2s;
+
+        &:hover {
+        transform: scale(1.05);
+        }
+    }
+    }
+
+
+    }
+
+
+}
+
+
+  
+
