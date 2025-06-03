@@ -9,7 +9,10 @@ const Home = () => {
       <div className="overlay-content">
         <h1>One Piece</h1>
         <p>
-          One Piece é um anime e mangá que conta a história de Monkey D. Luffy, um jovem pirata que sonha em encontrar o tesouro lendário chamado “One Piece” e se tornar o Rei dos Piratas. Durante sua jornada, ele reúne uma tripulação poderosa, enfrenta inimigos perigosos e descobre mistérios do mundo.
+          Em One Piece, conhecemos as aventuras de Monkey D. Luffy e sua equipe de piratas, 
+          navegando por oceanos fantásticos e ilhas exóticas em busca do maior tesouro já deixado 
+          pelo lendário Gold Roger. Luffy acredita na lenda do tesouro e sai em uma busca
+           extraordinária na esperança de proclamar para si o título de Rei dos Piratas. 
         </p>
        <div className="button-wrapper">
         <Link to="/mangas" className="manga-button">
