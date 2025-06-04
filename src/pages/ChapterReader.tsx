@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Chapter } from "../types/Chapter";
 import "./ChapterReader.scss";
@@ -13,6 +13,8 @@ const ChapterReader = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const imageRefs = useRef<(HTMLImageElement | null)[]>([]);
 
+  const navigate = useNavigate();
+
   const currentIndex = allChapters.findIndex((c) => c.chapterId === currentId);
   const prevChapter = allChapters[currentIndex + 1];
   const nextChapter = allChapters[currentIndex - 1];
@@ -21,8 +23,8 @@ const ChapterReader = () => {
     const fetchData = async () => {
       try {
         const [chapterRes, allChaptersRes] = await Promise.all([
-         axios.get(`https://one-piece-api-h20v.onrender.com/${currentId}`),
-          axios.get("https://one-piece-api-h20v.onrender.com/chapters"),
+          axios.get(`https://one-piece-api-h20v.onrender.com/api/chapters/${currentId}`),
+          axios.get("https://one-piece-api-h20v.onrender.com/api/chapters")
         ]);
         setChapter(chapterRes.data);
         setAllChapters(allChaptersRes.data);
@@ -42,15 +44,15 @@ const ChapterReader = () => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft" && prevChapter) {
-        window.location.href = `/chapter/${prevChapter.chapterId}`;
+        navigate(`/chapter/${prevChapter.chapterId}`);
       } else if (e.key === "ArrowRight" && nextChapter) {
-        window.location.href = `/chapter/${nextChapter.chapterId}`;
+        navigate(`/chapter/${nextChapter.chapterId}`);
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [prevChapter, nextChapter]);
+  }, [prevChapter, nextChapter, navigate]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -109,10 +111,10 @@ const ChapterReader = () => {
 
         {chapter?.pages.map((url, index) => (
           <img
-            className="chapter-page"
             key={index}
             src={url}
             alt={`Página ${index + 1}`}
+            className="chapter-page"
             ref={(el) => {
               imageRefs.current[index] = el;
             }}
@@ -121,12 +123,6 @@ const ChapterReader = () => {
             onMouseDown={(e) => e.preventDefault()}
           />
         ))}
-
-        <div className="back-to-list">
-          <Link to="/mangas" className="nav-button">
-            ← Voltar para lista de mangás
-          </Link>
-        </div>
 
         <div className="back-to-home">
           <Link to="/" className="nav-button">
